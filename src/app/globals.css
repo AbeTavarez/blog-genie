@@ -6,6 +6,11 @@
 
 }
 
+* {
+    scrollbar-width: thin;
+    scrollbar-color: black blue
+}
+
 @layer components {
     .btn {
         @apply rounded-md bg-emerald-500 p-4 text-white hover:bg-emerald-600
