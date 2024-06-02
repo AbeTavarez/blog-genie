@@ -1,7 +1,7 @@
 'use server'
 import OpenAI from "openai";
 import clientPromise from "@/db/mongodb";
-import { BlogPost } from "@/types";
+import { Blog } from "@/types";
 import { revalidatePath } from "next/cache";
 
 const openai = new OpenAI({
@@ -13,8 +13,8 @@ const openai = new OpenAI({
  * Handle Completion
  * @param formData 
  */
-export async function handleCompletion(formData: FormData) {
-    const blogTopic = formData.get('user_prompt') as string;
+export async function handleCompletion(userPrompt: string) {
+    const blogTopic = userPrompt;
     console.log(blogTopic);
 
     // BD Client
@@ -75,7 +75,7 @@ export async function getBlogs() {
     const client = await clientPromise;
     const db =  client.db('bloggenie');
     // get all blog posts
-    const blogs = await db.collection<BlogPost>('blogs').find().toArray();
+    const blogs = await db.collection<Blog>('blogs').find().toArray();
     console.log(blogs);
     return blogs;
 }

@@ -3,16 +3,37 @@
 @tailwind utilities;
 
 :root {
+--primary: black;
+--secondary: royalblue;
 
 }
 
 * {
     scrollbar-width: thin;
-    scrollbar-color: black blue
+    scrollbar-color: var(--secondary) var(--primary);
 }
 
 @layer components {
     .btn {
-        @apply rounded-md bg-emerald-500 p-4 text-white hover:bg-emerald-600
+        @apply rounded-md p-2 text-white bg-blue-700 hover:shadow-blue-700/50 hover:shadow-lg hover:bg-blue-600 text-center
     }
+}
+
+@layer base {
+    ul {
+        padding: 2em;
+    }
+
+    ol {
+        padding: 2em;
+    }
+
+    ul > li {
+        list-style: inside;
+    }
+
+    ol > li {
+        list-style: number;
+    }
+
 }
